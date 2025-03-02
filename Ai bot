@@ -1,0 +1,35 @@
+import random
+import time
+
+class SilentAI:
+    def __init__(self, wisdom):
+        self.wisdom = wisdom
+
+    def think(self):
+        time.sleep(random.randint(1, 3))  # Simulate deep thinking
+        return random.choice(self.wisdom)
+
+    def respond(self, message):
+        if "?" in message:
+            return self.think()
+        return "..."
+
+# List of wise responses
+wisdom_quotes = [
+    "Silence is better than unnecessary words.",
+    "A focused mind is a powerful mind.",
+    "Observe more, speak less.",
+    "The loudest person in the room is rarely the wisest.",
+    "Patience is the key to mastery."
+]
+
+# Create a silent AI instance
+ai = SilentAI(wisdom_quotes)
+
+# Example usage
+while True:
+    user_input = input("You: ")
+    if user_input.lower() == "bye":
+        print("AI: ...")
+        break
+    print(f"AI: {ai.respond(user_input)}")
